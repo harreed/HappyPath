@@ -1,0 +1,158 @@
+{
+  "app": {
+    "bundleIdentifier": "dev.agentic.OnboardingFixture",
+    "companion": {
+      "mailboxRelativePath": "Documents/CompanionMailbox",
+      "projectPath": "Fixtures/OnboardingFixture/OnboardingFixture.xcodeproj",
+      "runnerBundleIdentifier": "dev.agentic.FixtureUITests.xctrunner",
+      "scheme": "CompanionService",
+      "testIdentifier": "FixtureUITests/CompanionServiceTests/testServe"
+    },
+    "configuration": "Debug",
+    "derivedDataPath": "DerivedData",
+    "launchArguments": [
+      "--recovery-probe"
+    ],
+    "productName": "OnboardingFixture",
+    "projectPath": "Fixtures/OnboardingFixture/OnboardingFixture.xcodeproj",
+    "scheme": "OnboardingFixture"
+  },
+  "categories": [
+    {
+      "id": "C79F49E0-6997-4237-916A-4D6F6B363746",
+      "name": "Recovery",
+      "suites": [
+        {
+          "id": "1C5D00C2-A18F-473F-A4ED-DA3DC923D9D4",
+          "name": "Production fixture",
+          "setup": [],
+          "teardown": [],
+          "tests": [
+            {
+              "assertions": [
+                {
+                  "exists": {
+                    "_0": {
+                      "identifier": {
+                        "_0": "onboarding.complete"
+                      }
+                    }
+                  }
+                },
+                {
+                  "textVisible": {
+                    "_0": "Welcome, Ada Recovery"
+                  }
+                }
+              ],
+              "blocks": [
+                {
+                  "action": {
+                    "tap": {
+                      "targets": [
+                        {
+                          "text": {
+                            "_0": "Finish setup"
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  "breakpoint": false,
+                  "enabled": true,
+                  "id": "698D3174-C4FE-4238-AF9F-501A69CC8C35",
+                  "retryPolicy": {
+                    "delaySeconds": 0.2,
+                    "maximumAttempts": 1,
+                    "timeoutSeconds": 45
+                  },
+                  "title": "Dismiss reminder then finish"
+                }
+              ],
+              "goal": "The text Welcome, Ada Recovery is visible.",
+              "goalAssessmentPolicy": {
+                "minimumConfidence": 0.92,
+                "requirement": "ocr",
+                "timeoutSeconds": 55
+              },
+              "id": "D5D22788-4A5A-4A7A-8585-F61B243E97AD",
+              "name": "Recovered onboarding",
+              "preconditions": [],
+              "recoveryPolicy": {
+                "allowTextFallback": true,
+                "candidateProvider": "local",
+                "knownInterruptionPolicies": [
+                  "fixture.optional-reminder.v1"
+                ],
+                "maximumActions": 3,
+                "maximumCaptureAge": 8,
+                "maximumRecaptures": 4,
+                "minimumConfidence": 0.9,
+                "mode": "knownAutomatic",
+                "timeoutSeconds": 40
+              },
+              "timeoutSeconds": 120,
+              "useProjectRecoveryPolicy": false
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "defaultRecoveryPolicy": {
+    "allowTextFallback": true,
+    "candidateProvider": "local",
+    "knownInterruptionPolicies": [
+      "fixture.optional-reminder.v1"
+    ],
+    "maximumActions": 3,
+    "maximumCaptureAge": 8,
+    "maximumRecaptures": 2,
+    "minimumConfidence": 0.9,
+    "mode": "knownAutomatic",
+    "timeoutSeconds": 40
+  },
+  "id": "AAE4E306-786E-4371-93A2-4044E6CBBACC",
+  "name": "Native Review",
+  "reviewedAlertPolicies": [
+    {
+      "alertIdentifier": "alert:Try reminders?",
+      "automaticButtonLabel": "Not Now",
+      "bundleIdentifier": "dev.agentic.OnboardingFixture",
+      "buttons": [
+        {
+          "label": "Not Now",
+          "risk": "nonDestructiveDismissal"
+        },
+        {
+          "label": "Enable",
+          "risk": "unknown"
+        }
+      ],
+      "exactContext": "Try reminders?\nThis optional interruption is injected by the fixture.\nNot Now\nEnable",
+      "id": "fixture.optional-reminder.v1"
+    },
+    {
+      "alertIdentifier": "alert:Optional tips",
+      "automaticButtonLabel": "Later",
+      "bundleIdentifier": "dev.agentic.OnboardingFixture",
+      "buttons": [
+        {
+          "label": "Later",
+          "risk": "nonDestructiveDismissal"
+        },
+        {
+          "identifier": "tips.show",
+          "label": "Show tips",
+          "risk": "unknown"
+        }
+      ],
+      "exactContext": "Optional tips\nShow tips next time?\nLater\nShow tips",
+      "id": "native.generic.review.v1"
+    }
+  ],
+  "schemaVersion": 1,
+  "simulator": {
+    "deviceID": "BAF8410A-432D-4BEF-BC0A-4F50B7A50C5A"
+  }
+}
